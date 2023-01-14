@@ -1,0 +1,11 @@
+{{- if .Values.ingressroute.enabled -}}
+{{- $fullName := include "..fullname" . -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: "{{ $fullName }}-rate-limit"
+spec:
+  rateLimit:
+    average: 5
+    burst: 25
+{{- end}}

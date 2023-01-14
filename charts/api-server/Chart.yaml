@@ -1,0 +1,14 @@
+apiVersion: "v2"
+type: "application"
+version: "0.2.1"
+appVersion: "0.1.504"
+home: "https://circlesubi.id"
+description: ""
+name: "api-server"
+icon: "https://avatars.githubusercontent.com/u/60328382"
+maintainers:
+  - name: "Daniel Janz"
+    email: "daniel.janz@gnosis.pm"
+  - name: "Jon Richter"
+    email: "jon.richter@gnosis.pm"
+

@@ -1,0 +1,30 @@
+{{- if .Values.ingressroute.enabled -}}
+{{- $fullName := include "..fullname" . -}}
+{{- $namespace := .Release.Namespace -}}
+{{- $svcPort := .Values.service.port -}}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: "{{ $fullName }}-web"
+  labels:
+    {{- include "..labels" . | nindent 4 }}
+spec:
+  {{- with .Values.ingressroute.entryPoints.http }}
+  entryPoints:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  routes:
+  {{- range .Values.ingressroute.routes }}
+  - kind: Rule
+    match: "Host(`{{ tpl .host $ }}`)"
+    middlewares:
+    {{- range .middlewares.http }}
+    - name: "{{ $fullName }}-{{ .name }}"
+    {{- end }}
+    services:
+      - kind: TraefikService
+        name: noop@internal
+  {{- end }}
+  tls:
+    secretName: {{ $fullName }}
+{{- end }}

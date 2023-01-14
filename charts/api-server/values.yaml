@@ -1,0 +1,117 @@
+# Default values for circles-helm-api-server.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+host: "api.circlesubi.id"
+replicaCount: 2
+
+image:
+  repository: docker.io/circlesubi/api-server
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "0.1.504"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  className: traefik
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  hosts:
+    - host: "api.circlesubi.id"
+      paths:
+      - path: "/"
+  tls:
+    - secretName: "id-circlesubi-api-tls"
+      hosts:
+        - "api.circlesubi.id"
+
+ingressroute:
+  enabled: true
+  entryPoints:
+    http:
+    - web
+    https:
+    - websecure
+  routes:
+  - host: "api.circlesubi.id"
+    middlewares:
+      http:
+      - name: redirect
+      https:
+      - name: rate-limit
+  tls:
+    issuerRef:
+      name: letsencrypt-prod
+      kind: ClusterIssuer
+    dnsNames:
+      - "api.circlesubi.id"
+
+configuration:
+  APP_URL: "https:///"
+  APP_ID: ""
+  EXTERNAL_DOMAIN: ""
+  CORS_ORIGINS: "https:///"
+  RPC_GATEWAY_URL: "https://rpc.circlesubi.id"
+  PATHFINDER_URL: "https://rpc.circlesubi.id/pathfinder"
+  BLOCKCHAIN_INDEX_WS_URL: "wss://rpc.circlesubi.id/indexer"
+  ACCEPTED_ISSUER: ""
+  HUMANODE_CLIENT_ID: ""
+  DIGITALOCEAN_SPACES_ENDPOINT: ""
+  DIGITALOCEAN_SPACES_KEY: ""
+  SESSION_LIIFETIME: "2592000"
+  SMTP_DEBUG: ""
+  SMTP_HOST: ""
+  SMTP_PORT: ""
+  SMTP_USER: ""
+  MAIL_FROM: "notifications@"
+  DELAY_START: "0"
+  INVITATION_FUNDS_SAFE_ADDRESS: ""
+  INVITE_EOA: ""
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
