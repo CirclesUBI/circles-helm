@@ -26,6 +26,12 @@ spec:
       {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: {{ .Chart.Name }}-db-migrations
+          image: "{{ .Values.image.repository }}-db-migrations:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          envFrom:
+            - secretRef:
+                name: {{ include "..fullname" . }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
