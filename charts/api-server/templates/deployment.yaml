@@ -29,6 +29,7 @@ spec:
       initContainers:
         - name: {{ .Chart.Name }}-db-migrations
           image: "{{ .Values.image.repository }}-db-migrations:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - secretRef:
                 name: {{ include "..fullname" . }}
