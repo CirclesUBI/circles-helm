@@ -1,6 +1,6 @@
 apiVersion: "v2"
 type: "application"
-version: "0.2.3"
+version: "0.2.4"
 appVersion: "0.1.504"
 home: "https://circlesubi.id"
 description: ""
@@ -11,4 +11,3 @@ maintainers:
     email: "daniel.janz@gnosis.pm"
   - name: "Jon Richter"
     email: "jon.richter@gnosis.pm"
-

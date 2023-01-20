@@ -27,8 +27,8 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
-        - name: {{ .Chart.Name }}-db-migrations
-          image: "{{ .Values.image.repository }}-db-migrations:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        - name: {{ .Chart.Name }}-migrations
+          image: "{{ .Values.image.repository }}-migrations:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - secretRef:
