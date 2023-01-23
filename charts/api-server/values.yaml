@@ -4,6 +4,7 @@
 
 host: "api.circlesubi.id"
 replicaCount: 2
+timeoutSeconds: 3
 
 image:
   repository: docker.io/circlesubi/api-server

@@ -47,10 +47,18 @@ spec:
             httpGet:
               path: /health
               port: http
+            timeoutSeconds: {{ .Values.timeoutSeconds }}
           readinessProbe:
             httpGet:
               path: /health
               port: http
+            timeoutSeconds: {{ .Values.timeoutSeconds }}
+          startupProbe:
+            failureThreshold: 30
+            httpGet:
+              path: /health
+              port: http
+            timeoutSeconds: {{ .Values.timeoutSeconds }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           envFrom:
