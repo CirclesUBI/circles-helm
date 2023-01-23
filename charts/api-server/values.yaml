@@ -91,6 +91,8 @@ configuration:
   DELAY_START: "0"
   INVITATION_FUNDS_SAFE_ADDRESS: ""
   INVITE_EOA: ""
+  POSTGRES_USER: ""
+  POSTGRES_DB: ""
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
