@@ -93,6 +93,7 @@ configuration:
   INVITE_EOA: ""
   POSTGRES_USER: ""
   POSTGRES_DB: ""
+  GCS_AVATAR_BUCKET: ""
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
