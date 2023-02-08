@@ -3,6 +3,22 @@ entries:
   api-server:
   - apiVersion: v2
     appVersion: 0.1.504
+    created: "2023-02-08T11:56:31.491282214Z"
+    digest: 5fff3a3042f400c08d8fc9e35e3f1dd832a01439b5949558f11a9276364e172c
+    home: https://circlesubi.id
+    icon: https://avatars.githubusercontent.com/u/60328382
+    maintainers:
+    - email: daniel.janz@gnosis.pm
+      name: Daniel Janz
+    - email: jon.richter@gnosis.pm
+      name: Jon Richter
+    name: api-server
+    type: application
+    urls:
+    - https://github.com/CirclesUBI/circles-helm/releases/download/api-server-0.2.8/api-server-0.2.8.tgz
+    version: 0.2.8
+  - apiVersion: v2
+    appVersion: 0.1.504
     created: "2023-02-03T14:47:14.920160403Z"
     digest: a52fa5c7817760edb89ab8339423808dcfdc89b9fc64388d7ffdc4059db0f4ae
     home: https://circlesubi.id
@@ -113,4 +129,4 @@ entries:
     urls:
     - https://github.com/CirclesUBI/circles-helm/releases/download/api-server-0.2.1/api-server-0.2.1.tgz
     version: 0.2.1
-generated: "2023-02-03T14:47:14.920190703Z"
+generated: "2023-02-08T11:56:31.491311914Z"
