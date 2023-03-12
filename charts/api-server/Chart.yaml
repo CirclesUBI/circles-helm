@@ -1,6 +1,6 @@
 apiVersion: "v2"
 type: "application"
-version: "0.2.8"
+version: "0.2.9"
 appVersion: "0.1.504"
 home: "https://circlesubi.id"
 description: ""
