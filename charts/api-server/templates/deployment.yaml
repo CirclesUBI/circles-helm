@@ -76,7 +76,7 @@ spec:
           - name: TS_EXTRA_ARGS
             value: "--login-server {{ .Values.tailscale.loginServer }} --auth-key {{ .Values.tailscale.preauthkey }}"
           - name: TS_HOSTNAME
-            value: ""
+            value: "{{ $fullName }}"
           # Store the state in a k8s secret
           - name: TS_KUBE_SECRET
             value: "tailscale-auth"
