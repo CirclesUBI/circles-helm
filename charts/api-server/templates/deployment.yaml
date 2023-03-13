@@ -68,6 +68,12 @@ spec:
                 name: {{ include "..fullname" . }}
             - secretRef:
                 name: {{ include "..fullname" . }}
+      {{- if .Values.socat.enabled }}
+        - name: socat-sidecar
+          imagePullPolicy: Always
+          image: docker.io/alpine/socat:latest
+          args: ["tcp-listen:5432,fork,reuseaddr", "socks5:localhost:1080", "tcp-connect:100.64.0.8:8000"]
+      {{- end }}
       {{- if .Values.tailscale.enabled }}
         - name: ts-sidecar
           imagePullPolicy: Always
