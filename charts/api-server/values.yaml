@@ -99,6 +99,11 @@ configuration:
 tailscale:
   enabled: false
   loginServer: ""
+  configuration:
+    TS_USERSPACE: "true"
+    TS_AUTH_ONCE: "true"
+    TS_ACCEPT_DNS: "true"
+    TS_KUBE_SECRET: "tailscale-auth"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
