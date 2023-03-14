@@ -18,3 +18,14 @@ metadata:
 data:
   {{- toYaml .Values.tailscale.configuration | nindent 2 }}
 {{- end }}
+{{- if .Values.ncat.enabled }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ncat
+  labels:
+    {{- include "..labels" . | nindent 4 }}
+data:
+  {{- toYaml .Values.ncat.configuration | nindent 2 }}
+{{- end }}

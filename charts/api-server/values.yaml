@@ -105,9 +105,15 @@ tailscale:
     TS_ACCEPT_DNS: "true"
     TS_KUBE_SECRET: "tailscale-auth"
 
-socat:
+ncat:
   enabled: false
-  args: ["tcp-listen:5432,fork,reuseaddr", "socks5:localhost:db-vpn-ip-or-resolvable-dns-name:5432,socksport=1080"]
+  configuration:
+    HOST: localhost
+    PORT: "2345"
+    PROXY_HOST: localhost
+    PROXY_PORT: "1055"
+    TARGET_HOST: ""
+    TARGET_PORT: "5432"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

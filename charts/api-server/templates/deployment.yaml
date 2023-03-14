@@ -68,16 +68,13 @@ spec:
                 name: {{ include "..fullname" . }}
             - secretRef:
                 name: {{ include "..fullname" . }}
-      {{- if .Values.socat.enabled }}
-        - name: socat-sidecar
+      {{- if .Values.ncat.enabled }}
+        - name: ncat-sidecar
+          image: 'asia.gcr.io/celestial-opus-371808/api-server-ncat:dev'
           imagePullPolicy: Always
-          image: docker.io/alpine/socat:latest
-          {{- if .Values.socat.args }}
-          args:
-          {{- range .Values.socat.args }}
-            - {{ . | quote }}
-          {{- end }}
-          {{- end -}}
+          envFrom:
+            - configMapRef:
+                name: ncat
       {{- end }}
       {{- if .Values.tailscale.enabled }}
         - name: ts-sidecar
