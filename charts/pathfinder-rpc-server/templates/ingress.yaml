@@ -1,0 +1,34 @@
+---    
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pathfinder
+
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: pathfinder@kubernetescrd 
+spec:
+  tls:
+    - hosts:
+        - {{ .Values.pathfinderHealthStatus }}
+      secretName: tls-pathfinder
+  rules:
+  - host: {{ .Values.pathfinderHealthStatus }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values. }}
+            port:
+              number: {{ .Values }}
+      - path: /ws
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values }}
+            port:
+              number: {{ .Valuesd }}
+     

@@ -1,0 +1,10 @@
+# Blockchain Indexer
+blockchainIndexer:
+ indexerWebsocketURL:     wss://rpc.chiadochain.net/wss
+ indexerRPCGatewayURL:    https://rpc.chiadochain.net
+ hubAddress: 
+
+# Pathfinder proxy
+pathfinderProxy:
+  port: 80
+  corsOrigins: staging.circles.garden 

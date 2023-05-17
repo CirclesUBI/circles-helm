@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -o pathfinder-rpc-server --volumes persistentVolumeClaim -c -f docker-compose.pathfinder-pull.yml
+    kompose.version: 1.26.1 (a9d05d509)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: blockchain-indexer
+  name: blockchain-indexer
+spec:
+  ports:
+    - name: "8675"
+      port: 8675
+      targetPort: 8675
+  selector:
+    io.kompose.service: blockchain-indexer
+status:
+  loadBalancer: {}
