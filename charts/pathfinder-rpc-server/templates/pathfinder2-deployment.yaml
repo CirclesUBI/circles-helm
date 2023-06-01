@@ -8,6 +8,7 @@ metadata:
   labels:
     io.kompose.service: pathfinder2
   name: pathfinder2
+  namespace: pathfinder
 spec:
   replicas: 1
   selector:

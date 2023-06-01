@@ -8,6 +8,7 @@ metadata:
   labels:
     io.kompose.service: indexer-db
   name: indexer-db
+  namespace: pathfinder
 spec:
   replicas: 1
   selector:

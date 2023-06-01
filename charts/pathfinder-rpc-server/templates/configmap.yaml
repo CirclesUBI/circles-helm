@@ -2,10 +2,11 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: env
+  namespace: pathfinder
 data:
   # Blockchain Indexer   
   # ~~~~~~~~~~~~~~~~~~~~~~
-  HUB_ADDRESS: {{.Values.contracts.hubAddress}}
+  HUB_ADDRESS: {{.Values.blockchainIndexer.hubAddress}}
   INDEXER_CONNECTION_STRING: {{.Values.blockchainIndexer.indexerConnectionString }}
   INDEXER_RPC_GATEWAY_URL: {{ .Values.blockchainIndexer.indexerRPCGatewayURL }}
   INDEXER_WEBSOCKET_URL: {{ .Values.blockchainIndexer.indexerWebsocketURL }}
@@ -25,8 +26,8 @@ data:
 
   # Pathfinder updater 
 
-PATHFINDER_UPDATER_INDEXER_DB_CONNECTION_STRING: {{ .Values.pathfinderUpdater.indexerDBConnectionString }}
-PATHFINDER_UPDATER_INDEXER_WS_URL: {{ .Values.pathfinderUpdater.indexerWSurl }}
-PATHFINDER_UPDATER_INTERNAL_CAPACITY_GRAPH_PATH: {{ .Values.pathfinderUpdater.internalCapacityGraph }}
-PATHFINDER_UPDATER_EXTERNAL_CAPACITY_GRAPH_PATH: {{ .Values.pathfinderUpdater.externalCapacityGraph }}
-PATHFINDER_UPDATER_RPC_URL: {{ .Values.pathfinderUpdater.rpcURL }}
+  PATHFINDER_UPDATER_INDEXER_DB_CONNECTION_STRING: {{ .Values.pathfinderUpdater.indexerDBConnectionString }}
+  PATHFINDER_UPDATER_INDEXER_WS_URL: {{ .Values.pathfinderUpdater.indexerWSurl }}
+  PATHFINDER_UPDATER_INTERNAL_CAPACITY_GRAPH_PATH: {{ .Values.pathfinderUpdater.internalCapacityGraph }}
+  PATHFINDER_UPDATER_EXTERNAL_CAPACITY_GRAPH_PATH: {{ .Values.pathfinderUpdater.externalCapacityGraph }}
+ PATHFINDER_UPDATER_RPC_URL: {{ .Values.pathfinderUpdater.rpcURL }}

@@ -8,6 +8,7 @@ metadata:
   labels:
     io.kompose.service: blockchain-indexer
   name: blockchain-indexer
+  namespace: pathfinder
 spec:
   ports:
     - name: "8675"

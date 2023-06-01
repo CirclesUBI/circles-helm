@@ -5,6 +5,7 @@ metadata:
   labels:
     io.kompose.service: pathfinder2-updater-claim0
   name: pathfinder2-updater-claim0
+  namespace: pathfinder
 spec:
   accessModes:
     - ReadWriteOnce

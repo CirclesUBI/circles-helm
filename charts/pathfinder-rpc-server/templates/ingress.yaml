@@ -2,12 +2,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: pathfinder
-
+  name: pathfinder-ingress
+  namespace: pathfinder
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.middlewares: pathfinder@kubernetescrd 
+    traefik.ingress.kubernetes.io/router.middlewares: pathfinder-corsheaders@kubernetescrd 
 spec:
   tls:
     - hosts:

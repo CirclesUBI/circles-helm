@@ -8,6 +8,7 @@ metadata:
   labels:
     io.kompose.service: pathfinder-proxy
   name: pathfinder-proxy
+  namespace: pathfinder
 spec:
   ports:
     - name: "8081"

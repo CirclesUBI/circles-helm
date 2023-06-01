@@ -1,0 +1,10 @@
+# Blockchain Indexer
+blockchainIndexer:
+ indexerWebsocketURL:     wss://rpc.gnosischain.com/wss
+ indexerRPCGatewayURL:    https://rpc.gnosischain.com/
+ hubAddress: 
+
+# Pathfinder proxy
+pathfinderProxy:
+  port: 80
+  corsOrigins: circles.garden 
