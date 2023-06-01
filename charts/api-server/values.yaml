@@ -95,6 +95,8 @@ configuration:
   POSTGRES_DB: ""
   GCS_AVATAR_FILES_BUCKET_NAME: ""
   TRANSLATOR_ORGANISATION_ADDRESS: ""
+  COOKIE_SAME_SITE_POLICY: "strict"
+  COOKIE_SECURE_POLICY: "secure"
 
 tailscale:
   enabled: false
