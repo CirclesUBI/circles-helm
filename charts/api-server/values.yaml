@@ -7,10 +7,14 @@ replicaCount: 2
 timeoutSeconds: 3
 
 image:
-  repository: docker.io/circlesubi/api-server
+  repository: ghcr.io/circlesubi/api-server
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "0.1.504"
+
+migrations:
+  image: ghcr.io/circlesubi/api-server-migrations
+  tag: dev
 
 imagePullSecrets: []
 nameOverride: ""
@@ -100,6 +104,8 @@ configuration:
 
 tailscale:
   enabled: false
+  image: ghcr.io/tailscale/tailscale
+  tag: v1.42.0
   loginServer: ""
   configuration:
     TS_USERSPACE: "true"
@@ -109,6 +115,8 @@ tailscale:
 
 ncat:
   enabled: false
+  image: ghcr.io/circlesubi/api-server-ncat
+  tag: dev
   configuration:
     HOST: localhost
     PORT: "2345"
