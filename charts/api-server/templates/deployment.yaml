@@ -70,7 +70,7 @@ spec:
                 name: {{ include "..fullname" . }}
       {{- if .Values.ncat.enabled }}
         - name: ncat-sidecar
-          image: "{{ .Values.ncat.image }}:{{ .Values.ncat.tag }}'"
+          image: "{{ .Values.ncat.image }}:{{ .Values.ncat.tag }}"
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
