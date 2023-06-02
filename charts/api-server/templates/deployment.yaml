@@ -28,7 +28,7 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
         - name: {{ .Chart.Name }}-migrations
-          image: "{{ .Values.image.repository }}-migrations:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.migrations.image }}:{{ .Values.migrations.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:
@@ -70,7 +70,7 @@ spec:
                 name: {{ include "..fullname" . }}
       {{- if .Values.ncat.enabled }}
         - name: ncat-sidecar
-          image: 'asia.gcr.io/celestial-opus-371808/api-server-ncat:dev'
+          image: "{{ .Values.ncat.image }}:{{ .Values.ncat.tag }}'"
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
@@ -79,7 +79,7 @@ spec:
       {{- if .Values.tailscale.enabled }}
         - name: ts-sidecar
           imagePullPolicy: Always
-          image: "ghcr.io/tailscale/tailscale:v1.36.2"
+          image: "{{ .Values.tailscale.image }}:{{ .Values.tailscale.tag }}"
           env:
             - name: TS_EXTRA_ARGS
               value: "--login-server {{ .Values.tailscale.loginServer }}"
