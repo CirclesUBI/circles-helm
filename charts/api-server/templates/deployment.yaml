@@ -27,12 +27,16 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
+        - name: {{ .Chart.Name }}-extensions
+          image: "{{ .Values.extensions.image }}:{{ .Values.extensions.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - secretRef:
+                name: {{ include "..fullname" . }}
         - name: {{ .Chart.Name }}-migrations
           image: "{{ .Values.migrations.image }}:{{ .Values.migrations.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
-            - configMapRef:
-                name: {{ include "..fullname" . }}
             - secretRef:
                 name: {{ include "..fullname" . }}
       containers:
