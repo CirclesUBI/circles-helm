@@ -12,6 +12,10 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "0.1.504"
 
+extensions:
+  image: ghcr.io/circlesubi/api-server-extensions
+  tag: dev
+
 migrations:
   image: ghcr.io/circlesubi/api-server-migrations
   tag: dev
