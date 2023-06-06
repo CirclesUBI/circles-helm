@@ -37,6 +37,8 @@ spec:
           image: "{{ .Values.migrations.image }}:{{ .Values.migrations.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
+            - configMapRef:
+                name: {{ include "..fullname" . }}
             - secretRef:
                 name: {{ include "..fullname" . }}
       containers:
