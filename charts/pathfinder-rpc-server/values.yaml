@@ -14,9 +14,9 @@ blockchainIndexer:
 
 # Pathfinder proxy
 pathfinderProxy:
-  port: 80
-  upstreamServiceEndpoint: http://pathfinder2:54389
-  upstreamHealthEndpoint:  http://pathfinder2-updater:8794
+  port: 8675
+  upstreamServiceEndpoints: http://pathfinder2:54389
+  upstreamHealthEndpoints:  http://pathfinder2-updater:8794
 
 # Pathfinder updater
 pathfinderUpdater:
@@ -27,7 +27,7 @@ pathfinderUpdater:
   rpcURL:                    http://pathfinder2:54389
 
 postgresql:
-  enabled: false
+  enabled: true 
   auth:
     username: indexer-db-user 
     database: indexer-db

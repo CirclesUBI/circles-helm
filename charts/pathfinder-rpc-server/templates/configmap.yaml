@@ -14,7 +14,7 @@ data:
   # Pathfinder proxy
 
   PATHFINDER_PROXY_PORT: "{{ .Values.pathfinderProxy.port }}"
-  PATHFINDER_PROXY_CORS_ORIGINS: {{ .Values.pathfinderProxy.corsOrigins }}
+  PATHFINDER_PROXY_CORS_ORIGINS: {{ .Values.pathfinderProxyCorsOrigins }}
   PATHFINDER_PROXY_UPSTREAM_SERVICE_ENDPOINTS: {{ .Values.pathfinderProxy.upstreamServiceEndpoints }}
   PATHFINDER_PROXY_UPSTREAM_HEALTH_ENDPOINTS:   {{ .Values.pathfinderProxy.upstreamHealthEndpoints }}     
 
