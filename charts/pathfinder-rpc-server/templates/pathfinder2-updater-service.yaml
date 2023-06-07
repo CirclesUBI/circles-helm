@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert --controller statefulset -o pathfinder-rpc-server  -c
+    kompose.version: 1.26.1 (a9d05d509)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: pathfinder2-updater
+  name: pathfinder2-updater
+  namespace: pathfinder
+spec:
+  clusterIP: None
+  ports:
+    - name: headless
+      port: 55555
+      targetPort: 0
+  selector:
+    io.kompose.service: pathfinder2-updater
+status:
+  loadBalancer: {}

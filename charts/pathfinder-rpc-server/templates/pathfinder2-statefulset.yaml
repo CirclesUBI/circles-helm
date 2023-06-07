@@ -1,8 +1,8 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   annotations:
-    kompose.cmd: kompose convert -o pathfinder-rpc-server --volumes persistentVolumeClaim -c -f docker-compose.pathfinder-pull.yml
+    kompose.cmd: kompose convert --controller statefulset -o pathfinder-rpc-server --volumes persistentVolumeClaim -c
     kompose.version: 1.26.1 (a9d05d509)
   creationTimestamp: null
   labels:
@@ -14,13 +14,9 @@ spec:
   selector:
     matchLabels:
       io.kompose.service: pathfinder2
-  strategy:
-    type: Recreate
+  serviceName: pathfinder2
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -o pathfinder-rpc-server --volumes persistentVolumeClaim -c -f docker-compose.pathfinder-pull.yml
-        kompose.version: 1.26.1 (a9d05d509)
       creationTimestamp: null
       labels:
         io.kompose.service: pathfinder2
@@ -37,8 +33,19 @@ spec:
             - mountPath: /var/pathfinder2/data
               name: pathfinder2-claim0
       restartPolicy: Always
-      volumes:
-        - name: pathfinder2-claim0
-          persistentVolumeClaim:
-            claimName: pathfinder2-claim0
-status: {}
+  updateStrategy: {}
+  volumeClaimTemplates:
+    - metadata:
+        creationTimestamp: null
+        labels:
+          io.kompose.service: pathfinder2-claim0
+        name: pathfinder2-claim0
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 100Mi
+      status: {}
+status:
+  replicas: 0

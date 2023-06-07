@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  annotations:
+    kompose.cmd: kompose convert --controller statefulset -o pathfinder-rpc-server --volumes persistentVolumeClaim -c
+    kompose.version: 1.26.1 (a9d05d509)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: blockchain-indexer
+  name: blockchain-indexer
+  namespace: pathfinder
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: blockchain-indexer
+  serviceName: blockchain-indexer
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: blockchain-indexer
+    spec:
+      containers:
+        - env:
+          - name: HUB_ADDRESS
+            valueFrom:
+              configMapKeyRef:
+                key: HUB_ADDRESS
+                name: env
+          - name: INDEXER_CONNECTION_STRING
+            valueFrom: 
+              secretKeyRef:
+                key: BLOCKCHAIN_INDEXER_CONNECTION_STRING
+                name: blockchain-indexer-connection-string 
+          - name: INDEXER_RPC_GATEWAY_URL
+            valueFrom:
+              configMapKeyRef:
+                key: INDEXER_RPC_GATEWAY_URL
+                name: env
+          - name: INDEXER_WEBSOCKET_URL
+            valueFrom:
+              configMapKeyRef:
+                key: INDEXER_WEBSOCKET_URL
+                name: env
+          image: circlesubi/blockchain-indexer:latest
+          name: blockchain-indexer
+          ports:
+            - containerPort: 8675
+          resources: {}
+      restartPolicy: Always
+  updateStrategy: {}
+status:
+  replicas: 0

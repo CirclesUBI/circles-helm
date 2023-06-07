@@ -6,16 +6,11 @@ acmeServer: https://acme-v02.api.letsencrypt.org/directory
 contracts:
   hubAddress:
 
-# Indexer DB
-indexerDB:
-  db:      index
-  user:    doadmin
-  pgdata:  var/lib/postgresql/data/pgdata
 
 
 # Blockchain Indexer
 blockchainIndexer:
- indexerConnectionString: "Server=indexer-db;Port=5432;Database=index;User ID=postgres;Password=postgres;Command Timeout=240;"
+ indexerConnectionString: 
 
 # Pathfinder proxy
 pathfinderProxy:
@@ -30,3 +25,10 @@ pathfinderUpdater:
   internalCapacityGraph:     /var/pathfinder2/data/capacity_graph.db
   externalCapacityGraph:     /var/pathfinder2/data/capacity_graph.db
   rpcURL:                    http://pathfinder2:54389
+
+postgresql:
+  enabled: false
+  auth:
+    username: indexer-db-user 
+    database: indexer-db
+    existingSecret: indexer-db-secret 

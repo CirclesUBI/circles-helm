@@ -7,4 +7,5 @@ blockchainIndexer:
 # Pathfinder proxy
 pathfinderProxy:
   port: 80
-  corsOrigins: circles.garden 
+  corsOrigins: circles.garden
+  pathfinderProxyDomain: pathfinder.circles.garden

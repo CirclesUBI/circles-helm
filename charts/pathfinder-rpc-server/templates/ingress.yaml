@@ -11,24 +11,17 @@ metadata:
 spec:
   tls:
     - hosts:
-        - {{ .Values.pathfinderHealthStatus }}
+        - {{ .Values.pathfinderProxyDomain }}
       secretName: tls-pathfinder
   rules:
-  - host: {{ .Values.pathfinderHealthStatus }}
+  - host: {{ .Values.pathfinderProxyDomain }}
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: {{ .Values. }}
+            name: pathfinder-proxy
             port:
-              number: {{ .Values }}
-      - path: /ws
-        pathType: Prefix
-        backend:
-          service:
-            name: {{ .Values }}
-            port:
-              number: {{ .Valuesd }}
-     
+              number: 80
+    

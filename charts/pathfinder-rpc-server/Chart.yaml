@@ -4,5 +4,10 @@ version: 0.0.1
 apiVersion: v1
 keywords:
   - pathfinder-rpc-server
-sources:
-home:
+
+dependencies:
+  - name: postgresql
+    repository: https://charts.bitnami.com/bitnami
+    version: 12.1.9
+    condition: postgresql.enabled
+    

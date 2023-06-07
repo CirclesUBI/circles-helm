@@ -11,11 +11,6 @@ data:
   INDEXER_RPC_GATEWAY_URL: {{ .Values.blockchainIndexer.indexerRPCGatewayURL }}
   INDEXER_WEBSOCKET_URL: {{ .Values.blockchainIndexer.indexerWebsocketURL }}
 
-  # Indexer DB
-  # secret BLOCKCHAIN_INDEXER_POSTGRES_PASSWORD: {{ .Values. }}
-  BLOCKCHAIN_INDEXER_POSTGRES_DB: {{ .Values.indexerDB.db }}
-  BLOCKCHAIN_INDEXER_POSTGRES_USER: {{ .Values.indexerDB.user }}
-  BLOCKCHAIN_INDEXER_POSTGRES_PGDATA: {{ .Values.indexerDB.pgdata }}
 
   # Pathfinder proxy
 
@@ -30,4 +25,4 @@ data:
   PATHFINDER_UPDATER_INDEXER_WS_URL: {{ .Values.pathfinderUpdater.indexerWSurl }}
   PATHFINDER_UPDATER_INTERNAL_CAPACITY_GRAPH_PATH: {{ .Values.pathfinderUpdater.internalCapacityGraph }}
   PATHFINDER_UPDATER_EXTERNAL_CAPACITY_GRAPH_PATH: {{ .Values.pathfinderUpdater.externalCapacityGraph }}
- PATHFINDER_UPDATER_RPC_URL: {{ .Values.pathfinderUpdater.rpcURL }}
+  PATHFINDER_UPDATER_RPC_URL: {{ .Values.pathfinderUpdater.rpcURL }}

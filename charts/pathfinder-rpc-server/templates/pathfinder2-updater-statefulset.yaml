@@ -34,9 +34,9 @@ spec:
                   name: env
             - name: INDEXER_DB_CONNECTION_STRING
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   key:  PATHFINDER_UPDATER_INDEXER_DB_CONNECTION_STRING
-                  name: env 
+                  name: pathfinder-updater-connection-string 
             - name: INDEXER_WS_URL
               valueFrom:
                 configMapKeyRef:
