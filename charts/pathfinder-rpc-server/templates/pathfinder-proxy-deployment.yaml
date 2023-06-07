@@ -49,7 +49,7 @@ spec:
           image: circlesubi/pathfinder-proxy:latest
           name: pathfinder-proxy
           ports:
-            - containerPort: 80
+            - containerPort: 8675
           resources: {}
       restartPolicy: Always
 status: {}

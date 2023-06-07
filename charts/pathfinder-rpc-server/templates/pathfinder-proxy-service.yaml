@@ -2,18 +2,17 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    kompose.cmd: kompose convert -o pathfinder-rpc-server --volumes persistentVolumeClaim -c -f docker-compose.pathfinder-pull.yml
+    kompose.cmd: kompose convert -o pathfinder-rpc-server -c
     kompose.version: 1.26.1 (a9d05d509)
   creationTimestamp: null
   labels:
     io.kompose.service: pathfinder-proxy
   name: pathfinder-proxy
-  namespace: pathfinder
 spec:
   ports:
-    - name: "8081"
-      port: 8081
-      targetPort: 80
+    - name: "8675"
+      port: 8675
+      targetPort: 8675
   selector:
     io.kompose.service: pathfinder-proxy
 status:

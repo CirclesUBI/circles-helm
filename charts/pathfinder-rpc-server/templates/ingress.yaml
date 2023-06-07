@@ -11,10 +11,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - {{ .Values.pathfinderProxyDomain }}
+        - {{ .Values.pathfinderProxyHost }}
       secretName: tls-pathfinder
   rules:
-  - host: {{ .Values.pathfinderProxyDomain }}
+  - host: {{ .Values.pathfinderProxyHost }}
     http:
       paths:
       - path: /
@@ -23,5 +23,5 @@ spec:
           service:
             name: pathfinder-proxy
             port:
-              number: 80
+              number: 8675
     
