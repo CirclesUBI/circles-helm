@@ -8,9 +8,6 @@ contracts:
 
 
 
-# Blockchain Indexer
-blockchainIndexer:
- indexerConnectionString: 
 
 # Pathfinder proxy
 pathfinderProxy:
@@ -29,6 +26,11 @@ pathfinderUpdater:
 postgresql:
   enabled: true 
   auth:
-    username: indexer-db-user 
+    username: doadmin
     database: indexer-db
     existingSecret: indexer-db-secret 
+  primary:
+    service:
+      type: NodePort
+      nodePorts:
+        postgresql: "30032"

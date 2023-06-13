@@ -8,6 +8,7 @@ metadata:
   labels:
     io.kompose.service: pathfinder2-updater
   name: pathfinder2-updater
+  namespace: pathfinder
 spec:
   replicas: 1
   selector:
@@ -52,21 +53,12 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: /var/pathfinder2/data
-              name: pathfinder2-updater-claim0
+              name: pathfinder2-claim0
+      volumes: 
+        - name: pathfinder2-claim0 
+          persistentVolumeClaim:
+            claimName: pathfinder2-claim0-pathfinder2-0
       restartPolicy: Always
   updateStrategy: {}
-  volumeClaimTemplates:
-    - metadata:
-        creationTimestamp: null
-        labels:
-          io.kompose.service: pathfinder2-updater-claim0
-        name: pathfinder2-updater-claim0
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 100Mi
-      status: {}
 status:
   replicas: 0

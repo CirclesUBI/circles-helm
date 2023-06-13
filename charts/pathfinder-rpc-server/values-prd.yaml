@@ -1,9 +1,9 @@
 # Blockchain Indexer
 blockchainIndexer:
- indexerWebsocketURL:     wss://rpc.gnosischain.com/wss
- indexerRPCGatewayURL:    https://rpc.gnosischain.com/
- hubAddress: 
+ indexerWebsocketURL:     http://rpc.gnosischain.com
+ indexerRPCGatewayURL:    http://rpc.gnosischain.com/
+ hubAddress:              0x29b9a7fBb8995b2423a71cC17cf9810798F6C543
 
 # Pathfinder proxy
-pathfinderProxyCorsOrigins: circles.garden
-pathfinderProxyHost: pathfinder.circles.garden
+pathfinderProxyCorsOrigins: https://staging.circles.garden
+pathfinderProxyHost:        pathfinder.testing.circles.garden
