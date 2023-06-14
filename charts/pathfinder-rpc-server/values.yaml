@@ -1,12 +1,30 @@
 # LetsEncrypt certificates
-acmeEmail:                 circlesubi@gmail.com
-acmeServer:                https://acme-v02.api.letsencrypt.org/directory
+acmeEmail:                 
+acmeServer:                
 
 # Smart Contracts
 contracts:
   hubAddress:
 
 
+# Default values for pathfinder-rpc-server 
+
+
+# Blockchain Indexer
+blockchainIndexer:
+ indexerWebsocketURL:      
+ indexerRPCGatewayURL:     
+ hubAddress:               
+ startFromBlock:           
+ 
+# Pathfinder proxy
+pathfinderProxyCorsOrigins: 
+pathfinderProxyHost:        
+
+postgresql:
+  primary:
+    persistence:
+      size:                 500Gi
 
 
 # Pathfinder proxy
@@ -24,7 +42,7 @@ pathfinderUpdater:
   rpcURL:                    http://pathfinder2:54389
 
 postgresql:
-  enabled: true 
+  enabled: true
   auth:
     username:                 doadmin
     database:                 index
