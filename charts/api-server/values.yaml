@@ -10,7 +10,7 @@ image:
   repository: ghcr.io/circlesubi/api-server
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.1.504"
+  tag: "dev"
 
 extensions:
   image: ghcr.io/circlesubi/api-server-extensions
@@ -105,29 +105,7 @@ configuration:
   TRANSLATOR_ORGANISATION_ADDRESS: ""
   COOKIE_SAME_SITE_POLICY: "Strict"
   COOKIE_SECURE_POLICY: "Secure"
-
-tailscale:
-  enabled: false
-  image: ghcr.io/tailscale/tailscale
-  tag: v1.42.0
-  loginServer: ""
-  configuration:
-    TS_USERSPACE: "true"
-    TS_AUTH_ONCE: "true"
-    TS_ACCEPT_DNS: "true"
-    TS_KUBE_SECRET: "tailscale-auth"
-
-ncat:
-  enabled: false
-  image: ghcr.io/circlesubi/api-server-ncat
-  tag: dev
-  configuration:
-    HOST: localhost
-    PORT: "2345"
-    PROXY_HOST: localhost
-    PROXY_PORT: "1055"
-    TARGET_HOST: ""
-    TARGET_PORT: "5432"
+  OPERATOR_ORGANISATION_ADDRESS: "0xc5a786eafefcf703c114558c443e4f17969d9573"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
