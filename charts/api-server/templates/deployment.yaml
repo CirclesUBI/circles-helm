@@ -74,34 +74,6 @@ spec:
                 name: {{ include "..fullname" . }}
             - secretRef:
                 name: {{ include "..fullname" . }}
-      {{- if .Values.ncat.enabled }}
-        - name: ncat-sidecar
-          image: "{{ .Values.ncat.image }}:{{ .Values.ncat.tag }}"
-          imagePullPolicy: Always
-          envFrom:
-            - configMapRef:
-                name: ncat
-      {{- end }}
-      {{- if .Values.tailscale.enabled }}
-        - name: ts-sidecar
-          imagePullPolicy: Always
-          image: "{{ .Values.tailscale.image }}:{{ .Values.tailscale.tag }}"
-          env:
-            - name: TS_EXTRA_ARGS
-              value: "--login-server {{ .Values.tailscale.loginServer }}"
-            - name: TS_AUTHKEY
-              valueFrom:
-                secretKeyRef:
-                  name: tailscale
-                  key: TS_AUTHKEY
-          envFrom:
-            - configMapRef:
-                name: tailscale
-          securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
-      serviceAccountName: "tailscale"
-      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
