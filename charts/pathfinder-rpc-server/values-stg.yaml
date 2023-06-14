@@ -2,8 +2,14 @@
 blockchainIndexer:
  indexerWebsocketURL:     http://rpc.chiadochain.net
  indexerRPCGatewayURL:    http://rpc.chiadochain.net
- hubAddress: 0xdbF22D4e8962Db3b2F1d9Ff55be728A887e47710 
+ hubAddress: 0xdbF22D4e8962Db3b2F1d9Ff55be728A887e47710
+ startFromBlock: 1
 
 # Pathfinder proxy
 pathfinderProxyCorsOrigins: https://staging.circles.garden
 pathfinderProxyHost: pathfinder.testing.circles.garden
+
+postgresql:
+  primary:
+    persistence:
+      size: 200Gi

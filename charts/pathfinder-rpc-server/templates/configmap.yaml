@@ -6,21 +6,21 @@ metadata:
 data:
   # Blockchain Indexer   
   # ~~~~~~~~~~~~~~~~~~~~~~
-  HUB_ADDRESS: {{.Values.blockchainIndexer.hubAddress}}
+  HUB_ADDRESS:             {{.Values.blockchainIndexer.hubAddress}}
   INDEXER_RPC_GATEWAY_URL: {{ .Values.blockchainIndexer.indexerRPCGatewayURL }}
-  INDEXER_WEBSOCKET_URL: {{ .Values.blockchainIndexer.indexerWebsocketURL }}
-
+  INDEXER_WEBSOCKET_URL:   {{ .Values.blockchainIndexer.indexerWebsocketURL }}
+  START_FROM_BLOCK:        "{{ .Values.blockchainIndexer.startFromBlock }}"
 
   # Pathfinder proxy
 
-  PATHFINDER_PROXY_PORT: "{{ .Values.pathfinderProxy.port }}"
-  PATHFINDER_PROXY_CORS_ORIGINS: {{ .Values.pathfinderProxyCorsOrigins }}
+  PATHFINDER_PROXY_PORT:                       "{{ .Values.pathfinderProxy.port }}"
+  PATHFINDER_PROXY_CORS_ORIGINS:               {{ .Values.pathfinderProxyCorsOrigins }}
   PATHFINDER_PROXY_UPSTREAM_SERVICE_ENDPOINTS: {{ .Values.pathfinderProxy.upstreamServiceEndpoints }}
-  PATHFINDER_PROXY_UPSTREAM_HEALTH_ENDPOINTS:   {{ .Values.pathfinderProxy.upstreamHealthEndpoints }}     
+  PATHFINDER_PROXY_UPSTREAM_HEALTH_ENDPOINTS:  {{ .Values.pathfinderProxy.upstreamHealthEndpoints }}     
 
   # Pathfinder updater 
 
-  PATHFINDER_UPDATER_INDEXER_WS_URL: {{ .Values.pathfinderUpdater.indexerWSurl }}
+  PATHFINDER_UPDATER_INDEXER_WS_URL:               {{ .Values.pathfinderUpdater.indexerWSurl }}
   PATHFINDER_UPDATER_INTERNAL_CAPACITY_GRAPH_PATH: {{ .Values.pathfinderUpdater.internalCapacityGraph }}
   PATHFINDER_UPDATER_EXTERNAL_CAPACITY_GRAPH_PATH: {{ .Values.pathfinderUpdater.externalCapacityGraph }}
-  PATHFINDER_UPDATER_RPC_URL: {{ .Values.pathfinderUpdater.rpcURL }}
+  PATHFINDER_UPDATER_RPC_URL:                      {{ .Values.pathfinderUpdater.rpcURL }}

@@ -23,27 +23,27 @@ spec:
     spec:
       containers:
         - env:
-            - name: EXTERNAL_CAPACITY_GRAPH_PATH
+            - name:     EXTERNAL_CAPACITY_GRAPH_PATH
               valueFrom:
                 configMapKeyRef:
                   key:  PATHFINDER_UPDATER_EXTERNAL_CAPACITY_GRAPH_PATH
                   name: env
-            - name: INDEXER_DB_CONNECTION_STRING
+            - name:     INDEXER_DB_CONNECTION_STRING
               valueFrom:
                 secretKeyRef:
                   key:  PATHFINDER_UPDATER_INDEXER_DB_CONNECTION_STRING
                   name: pathfinder-updater-connection-string 
-            - name: INDEXER_WS_URL
+            - name:     INDEXER_WS_URL
               valueFrom:
                 configMapKeyRef:
                   key:  PATHFINDER_UPDATER_INDEXER_WS_URL
                   name: env
-            - name: INTERNAL_CAPACITY_GRAPH_PATH
+            - name:     INTERNAL_CAPACITY_GRAPH_PATH
               valueFrom:
                 configMapKeyRef:
                   key:  PATHFINDER_UPDATER_INTERNAL_CAPACITY_GRAPH_PATH
                   name: env
-            - name: PATHFINDER_RPC_URL
+            - name:     PATHFINDER_RPC_URL
               valueFrom:
                 configMapKeyRef:
                   key:  PATHFINDER_UPDATER_RPC_URL

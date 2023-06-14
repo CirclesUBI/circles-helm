@@ -23,26 +23,31 @@ spec:
     spec:
       containers:
         - env:
-          - name: HUB_ADDRESS
+          - name:     HUB_ADDRESS
             valueFrom:
               configMapKeyRef:
-                key: HUB_ADDRESS
+                key:  HUB_ADDRESS
                 name: env
-          - name: INDEXER_CONNECTION_STRING
+          - name:     INDEXER_CONNECTION_STRING
             valueFrom: 
               secretKeyRef:
-                key: BLOCKCHAIN_INDEXER_CONNECTION_STRING
+                key:  BLOCKCHAIN_INDEXER_CONNECTION_STRING
                 name: blockchain-indexer-connection-string 
-          - name: INDEXER_RPC_GATEWAY_URL
+          - name:     INDEXER_RPC_GATEWAY_URL
             valueFrom:
               configMapKeyRef:
-                key: INDEXER_RPC_GATEWAY_URL
+                key:  INDEXER_RPC_GATEWAY_URL
                 name: env
-          - name: INDEXER_WEBSOCKET_URL
+          - name:     INDEXER_WEBSOCKET_URL
             valueFrom:
               configMapKeyRef:
-                key: INDEXER_WEBSOCKET_URL
+                key:  INDEXER_WEBSOCKET_URL
                 name: env
+          - name:     START_FROM_BLOCK
+            valueFrom:
+              configMapKeyRef:
+                key:  START_FROM_BLOCK 
+                name: env 
           image: circlesubi/blockchain-indexer:latest
           name: blockchain-indexer
           ports:

@@ -27,7 +27,7 @@ postgresql:
   enabled: true 
   auth:
     username: doadmin
-    database: indexer-db
+    database: index
     existingSecret: indexer-db-secret 
   primary:
     service:
