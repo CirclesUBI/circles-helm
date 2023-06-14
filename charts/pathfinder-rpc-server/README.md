@@ -11,6 +11,15 @@ For a detailed description please refer to [land-local](https://github.com/Circl
 | [pathfinder-proxy](https://github.com/CirclesUBI/pathfinder-proxy)       | pathfinder-proxy      | Maintains statistics, load balances and filters requests to the 'pathfinder2'            |
 
 
+### Pre-requisities
+
+Create the following secrets in your cluster:
+    - blockchain-indexer-connection-string: connection string for the indexer to the db
+    - pathfinder-updater-connection-string: connection string for the pathfinder to the db
+    - indexer-db-secret: `password` for the `doadmin` user and `postgres-password`  for the `postgres` user 
+
+Manage your secrets with your prefered tool. 
+
 ### Currents caveats and usage 
 
 #### Caveats
@@ -55,3 +64,5 @@ It could be that the indexer throws errors such as:
 
 
  #### Gnosis Chain and Chiado Tesnet chain 
+
+ The current indexer was written only for gnosis chain, but it can be used for chiado.  Use `values-prd.yaml`
