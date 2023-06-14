@@ -1,13 +1,13 @@
 name: pathfinder-rpc-server
-description: A generated Helm Chart for pathfinder-rpc-server from Skippbox Kompose
+description: pathfinder-rpc-server helm chart 
 version: 0.0.1
 apiVersion: v1
 keywords:
   - pathfinder-rpc-server
 
 dependencies:
-  - name: postgresql
+  - name:       postgresql
     repository: https://charts.bitnami.com/bitnami
-    version: 12.1.9
-    condition: postgresql.enabled
+    version:    12.1.9
+    condition:  postgresql.enabled
     

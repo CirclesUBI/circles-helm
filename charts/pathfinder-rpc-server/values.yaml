@@ -1,6 +1,6 @@
 # LetsEncrypt certificates
-acmeEmail: circlesubi@gmail.com
-acmeServer: https://acme-v02.api.letsencrypt.org/directory
+acmeEmail:                 circlesubi@gmail.com
+acmeServer:                https://acme-v02.api.letsencrypt.org/directory
 
 # Smart Contracts
 contracts:
@@ -26,11 +26,11 @@ pathfinderUpdater:
 postgresql:
   enabled: true 
   auth:
-    username: doadmin
-    database: index
-    existingSecret: indexer-db-secret 
+    username:                 doadmin
+    database:                 index
+    existingSecret:           indexer-db-secret 
   primary:
     service:
-      type: NodePort
+      type:                   NodePort
       nodePorts:
-        postgresql: "30032"
+        postgresql:           "30032"

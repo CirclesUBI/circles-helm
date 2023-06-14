@@ -4,6 +4,7 @@ blockchainIndexer:
  indexerRPCGatewayURL:     https://rpc.circlesubi.id
  hubAddress:               0x29b9a7fBb8995b2423a71cC17cf9810798F6C543
  startFromBlock:           "12529458"
+ 
 # Pathfinder proxy
 pathfinderProxyCorsOrigins: https://staging.circles.garden
 pathfinderProxyHost:        pathfinder.testing.circles.garden
@@ -11,4 +12,4 @@ pathfinderProxyHost:        pathfinder.testing.circles.garden
 postgresql:
   primary:
     persistence:
-      size: 500Gi
+      size:                 500Gi
