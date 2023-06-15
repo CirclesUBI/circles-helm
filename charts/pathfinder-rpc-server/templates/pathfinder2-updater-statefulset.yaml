@@ -19,7 +19,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: pathfinder2-updater
+        app: pathfinder2-updater
     spec:
       containers:
         - env:
