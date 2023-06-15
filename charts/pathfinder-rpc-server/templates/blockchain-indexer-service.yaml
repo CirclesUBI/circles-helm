@@ -12,7 +12,7 @@ spec:
       port: 8675
       targetPort: 8675
   selector:
-    io.kompose.service: blockchain-indexer
+    app: blockchain-indexer
   type: ClusterIP
 status:
   loadBalancer: {}
