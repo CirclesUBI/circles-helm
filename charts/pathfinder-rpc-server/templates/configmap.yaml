@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: env
+  name: environment
   namespace: pathfinder
 data:
   # Blockchain Indexer   
   # ~~~~~~~~~~~~~~~~~~~~~~
-  HUB_ADDRESS:                                    {{.Values.blockchainIndexer.hubAddress}}
+  HUB_ADDRESS:                                    {{ .Values.blockchainIndexer.hubAddress }}
   INDEXER_RPC_GATEWAY_URL:                        {{ .Values.blockchainIndexer.indexerRPCGatewayURL }}
   INDEXER_WEBSOCKET_URL:                          {{ .Values.blockchainIndexer.indexerWebsocketURL }}
   START_FROM_BLOCK:                               "{{ .Values.blockchainIndexer.startFromBlock }}"

@@ -1,12 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: kompose convert --controller statefulset -o pathfinder-rpc-server --volumes persistentVolumeClaim -c
-    kompose.version: 1.26.1 (a9d05d509)
-  creationTimestamp: null
   labels:
-    io.kompose.service: pathfinder2
+    app: pathfinder2
   name: pathfinder2
   namespace: pathfinder
 spec:
@@ -16,7 +12,7 @@ spec:
       port: 54389
       targetPort: 54389
   selector:
-    io.kompose.service: pathfinder2
+    app: pathfinder2
   type: ClusterIP
 status:
   loadBalancer: {}
