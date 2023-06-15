@@ -33,7 +33,7 @@ spec:
   volumeClaimTemplates:
     - metadata:
         labels:
-          io.kompose.service: pathfinder2-claim0
+          app: pathfinder2
         name: pathfinder2-claim0
       spec:
         accessModes:

@@ -13,9 +13,8 @@ spec:
   serviceName: blockchain-indexer
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: blockchain-indexer
+        app: blockchain-indexer
     spec:
       containers:
         - env:
