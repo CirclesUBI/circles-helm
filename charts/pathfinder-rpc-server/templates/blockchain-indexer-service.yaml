@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    io.kompose.service: blockchain-indexer
+    app: blockchain-indexer
   name: blockchain-indexer
   namespace: pathfinder
 spec:
