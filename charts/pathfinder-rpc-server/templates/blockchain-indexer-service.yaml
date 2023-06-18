@@ -8,7 +8,7 @@ metadata:
 spec:
   clusterIP: None
   ports:
-    - name: "8675"
+    - name: ws
       port: 8675
       targetPort: 8675
   selector:

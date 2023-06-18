@@ -25,5 +25,5 @@ spec:
           service:
             name: pathfinder-proxy
             port:
-              number: 8675
+              name: http
 {{- end -}}
