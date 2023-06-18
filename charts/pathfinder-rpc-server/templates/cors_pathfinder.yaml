@@ -12,7 +12,10 @@ spec:
       - "POST"
     accessControlAllowHeaders:
       - "*"
-    accessControlAllowOriginList: {{ index .Values "pathfinder-proxy" "cors-origins" "list" }}
+    {{- with index .Values "pathfinder-proxy" "cors-origins" "list" }}
+    accessControlAllowOriginList:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
     accessControlAllowOriginListRegex: {{ index .Values "pathfinder-proxy" "cors-origins" "listregex" }}
     accessControlMaxAge: 100
     addVaryHeader: true

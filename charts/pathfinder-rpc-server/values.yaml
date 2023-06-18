@@ -26,8 +26,8 @@ pathfinder-proxy:
   port: 8675
   cors-origins:
     header: ""
-    list: ""
-    list-regex: ""
+    list: []
+    list-regex: []
   upstream:
     service-endpoints: ""
     health-endpoints: ""
