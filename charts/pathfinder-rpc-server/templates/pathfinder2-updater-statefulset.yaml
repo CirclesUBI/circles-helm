@@ -23,7 +23,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key:  PATHFINDER_UPDATER_EXTERNAL_CAPACITY_GRAPH_PATH
-                  name: env
+                  name: pathfinder-environment
             - name:     INDEXER_DB_CONNECTION_STRING
               valueFrom:
                 secretKeyRef:
@@ -33,17 +33,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key:  PATHFINDER_UPDATER_INDEXER_WS_URL
-                  name: env
+                  name: pathfinder-environment
             - name:     INTERNAL_CAPACITY_GRAPH_PATH
               valueFrom:
                 configMapKeyRef:
                   key:  PATHFINDER_UPDATER_INTERNAL_CAPACITY_GRAPH_PATH
-                  name: env
+                  name: pathfinder-environment
             - name:     PATHFINDER_RPC_URL
               valueFrom:
                 configMapKeyRef:
                   key:  PATHFINDER_UPDATER_RPC_URL
-                  name: env
+                  name: pathfinder-environment
           image: circlesubi/pathfinder2-updater:latest
           name: pathfinder2-updater
           resources: {}

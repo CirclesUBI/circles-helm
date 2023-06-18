@@ -23,7 +23,7 @@ spec:
             valueFrom:
               configMapKeyRef:
                 key:  HUB_ADDRESS
-                name: env
+                name: pathfinder-environment
           - name:     INDEXER_CONNECTION_STRING
             valueFrom: 
               secretKeyRef:
@@ -33,12 +33,12 @@ spec:
             valueFrom:
               configMapKeyRef:
                 key:  INDEXER_RPC_GATEWAY_URL
-                name: env
+                name: pathfinder-environment
           - name:     INDEXER_WEBSOCKET_URL
             valueFrom:
               configMapKeyRef:
                 key:  INDEXER_WEBSOCKET_URL
-                name: env
+                name: pathfinder-environment
           - name:     START_FROM_BLOCK
             valueFrom:
               configMapKeyRef:

@@ -23,22 +23,22 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key:  PATHFINDER_PROXY_CORS_ORIGINS
-                  name: env
+                  name: pathfinder-environment
             - name: PORT
               valueFrom:
                 configMapKeyRef:
                   key:  PATHFINDER_PROXY_PORT
-                  name: env
+                  name: pathfinder-environment
             - name: UPSTREAM_HEALTH_ENDPOINTS
               valueFrom:
                 configMapKeyRef:
                   key: PATHFINDER_PROXY_UPSTREAM_HEALTH_ENDPOINTS
-                  name: env
+                  name: pathfinder-environment
             - name: UPSTREAM_SERVICE_ENDPOINTS
               valueFrom:
                 configMapKeyRef:
                   key:  PATHFINDER_PROXY_UPSTREAM_SERVICE_ENDPOINTS
-                  name: env
+                  name: pathfinder-environment
           image: circlesubi/pathfinder-proxy:latest
           name: pathfinder-proxy
           ports:
