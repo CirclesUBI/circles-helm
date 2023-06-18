@@ -25,6 +25,7 @@ pathfinder-proxy:
   enabled: false
   port: 8675
   cors-origins:
+    header: ""
     list: ""
     list-regex: ""
   upstream:

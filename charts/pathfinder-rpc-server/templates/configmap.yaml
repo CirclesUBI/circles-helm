@@ -12,7 +12,7 @@ data:
   {{- end }}
   {{- if index .Values "pathfinder-proxy" "enabled" }}
   PATHFINDER_PROXY_PORT:                          '{{ index .Values "pathfinder-proxy" "port" }}'
-  PATHFINDER_PROXY_CORS_ORIGINS:                   {{ index .Values "pathfinder-proxy" "cors-origins" }}
+  PATHFINDER_PROXY_CORS_ORIGINS:                   {{ index .Values "pathfinder-proxy" "cors-origins" "header" }}
   PATHFINDER_PROXY_UPSTREAM_SERVICE_ENDPOINTS:     {{ index .Values "pathfinder-proxy" "upstream" "service-endpoints" }}
   PATHFINDER_PROXY_UPSTREAM_HEALTH_ENDPOINTS:      {{ index .Values "pathfinder-proxy" "upstream" "health-endpoints" }}
   {{- end }}
