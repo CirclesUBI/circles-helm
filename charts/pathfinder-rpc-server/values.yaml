@@ -23,7 +23,7 @@ blockchain-indexer:
 # Pathfinder proxy
 pathfinder-proxy:
   enabled: false
-  port: 8675
+  port: "8675"
   cors-origins: ""
   upstream:
     service-endpoints: ""
