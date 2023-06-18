@@ -1,9 +1,8 @@
-{{- if .Values.ingress.enabled -}}
+{{- if .Values.ingress.middlewares.cors.enabled -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: corsheaders
-  namespace: pathfinder
+  name: {{ .Values.ingress.middlewares.cors.name }}
 spec:
   headers:
     accessControlAllowMethods:
@@ -12,11 +11,14 @@ spec:
       - "POST"
     accessControlAllowHeaders:
       - "*"
-    {{- with index .Values "pathfinder-proxy" "cors-origins" "list" }}
+    {{- with index .Values.ingress.middlewares.cors.origins "list" }}
     accessControlAllowOriginList:
       {{- toYaml . | nindent 6 }}
     {{- end }}
-    accessControlAllowOriginListRegex: {{ index .Values "pathfinder-proxy" "cors-origins" "listregex" }}
+    {{- with index .Values.ingress.middlewares.cors.origins "list-regex" }}
+    accessControlAllowOriginListRegex:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
     accessControlMaxAge: 100
     addVaryHeader: true
 {{- end -}}

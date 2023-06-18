@@ -24,10 +24,7 @@ blockchain-indexer:
 pathfinder-proxy:
   enabled: false
   port: 8675
-  cors-origins:
-    header: ""
-    list: []
-    list-regex: []
+  cors-origins: ""
   upstream:
     service-endpoints: ""
     health-endpoints: ""
@@ -39,6 +36,13 @@ ingress:
   tls:
     enabled: false
     secret: ""
+  middlewares:
+    cors:
+      enabled: false
+      name: cors
+      origins:
+        list: []
+        list-regex: []
 
 # Pathfinder
 pathfinder:
