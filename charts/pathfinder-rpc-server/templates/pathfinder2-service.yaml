@@ -5,7 +5,6 @@ metadata:
   labels:
     app: pathfinder2
   name: pathfinder2
-  namespace: pathfinder
 spec:
   clusterIP: None
   ports:

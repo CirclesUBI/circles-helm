@@ -5,7 +5,6 @@ metadata:
   labels:
     app: blockchain-indexer
   name: blockchain-indexer
-  namespace: pathfinder
 spec:
   replicas: 1
   selector:

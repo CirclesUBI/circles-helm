@@ -5,7 +5,6 @@ metadata:
   labels:
     app: pathfinder-proxy
   name: pathfinder-proxy
-  namespace: pathfinder
 spec:
   ports:
     - name: "8675"
