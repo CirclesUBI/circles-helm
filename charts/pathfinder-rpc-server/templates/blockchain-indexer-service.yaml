@@ -1,3 +1,4 @@
+{{- if index .Values "blockchain-indexer" "enabled" -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -14,5 +15,4 @@ spec:
   selector:
     app: blockchain-indexer
   type: ClusterIP
-status:
-  loadBalancer: {}
+{{- end -}}

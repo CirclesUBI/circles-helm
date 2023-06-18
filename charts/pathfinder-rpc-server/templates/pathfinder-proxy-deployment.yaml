@@ -1,3 +1,4 @@
+{{- if index .Values "pathfinder-proxy" "enabled" -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,7 +19,7 @@ spec:
     spec:
       containers:
         - env:
-            - name:     CORS_ORIGINS
+            - name: CORS_ORIGINS
               valueFrom:
                 configMapKeyRef:
                   key:  PATHFINDER_PROXY_CORS_ORIGINS
@@ -28,12 +29,12 @@ spec:
                 configMapKeyRef:
                   key:  PATHFINDER_PROXY_PORT
                   name: env
-            - name:     UPSTREAM_HEALTH_ENDPOINTS
+            - name: UPSTREAM_HEALTH_ENDPOINTS
               valueFrom:
                 configMapKeyRef:
-                  key:  PATHFINDER_PROXY_UPSTREAM_HEALTH_ENDPOINTS
+                  key: PATHFINDER_PROXY_UPSTREAM_HEALTH_ENDPOINTS
                   name: env
-            - name:     UPSTREAM_SERVICE_ENDPOINTS
+            - name: UPSTREAM_SERVICE_ENDPOINTS
               valueFrom:
                 configMapKeyRef:
                   key:  PATHFINDER_PROXY_UPSTREAM_SERVICE_ENDPOINTS
@@ -44,4 +45,4 @@ spec:
             - containerPort: 8675
           resources: {}
       restartPolicy: Always
-status: {}
+{{- end -}}

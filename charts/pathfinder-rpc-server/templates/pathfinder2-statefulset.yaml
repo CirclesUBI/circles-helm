@@ -1,3 +1,4 @@
+{{- if .Values.pathfinder.enabled -}}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -41,6 +42,4 @@ spec:
         resources:
           requests:
             storage: 200Gi 
-      status: {}
-status:
-  replicas: 0
+{{- end -}}
