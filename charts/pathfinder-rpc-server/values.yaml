@@ -1,54 +1,54 @@
-# LetsEncrypt certificates
-acmeEmail:                 
-acmeServer:                
-
 # Smart Contracts
 contracts:
-  hubAddress:
-
+  hub-address: ""
 
 # Default values for pathfinder-rpc-server 
-
-
-# Blockchain Indexer
-blockchainIndexer:
- indexerWebsocketURL:      
- indexerRPCGatewayURL:     
- hubAddress:               
- startFromBlock:           
- 
-# Pathfinder proxy
-pathfinderProxyCorsOrigins: 
-pathfinderProxyHost:        
-
 postgresql:
+  enabled: false
+  auth:
+    username: ""
+    database: index
   primary:
     persistence:
-      size:                 500Gi
+      size: 500Gi
 
+# Blockchain Indexer
+blockchain-indexer:
+  enabled: false
+  indexer-websocket-url: ""
+  indexer-rpc-gateway-url: ""
+  hub-address: ""
+  start-from-block: ""
 
 # Pathfinder proxy
-pathfinderProxy:
-  port: 8675
-  upstreamServiceEndpoints: http://pathfinder2:54389
-  upstreamHealthEndpoints:  http://pathfinder2-updater:8794
+pathfinder-proxy:
+  enabled: false
+  port: "8675"
+  cors-origins: ""
+  upstream:
+    service-endpoints: ""
+    health-endpoints: ""
 
-# Pathfinder updater
-pathfinderUpdater:
-  indexerDBConnectionString:
-  indexerWSurl:              ws://blockchain-indexer:8675
-  internalCapacityGraph:     /var/pathfinder2/data/capacity_graph.db
-  externalCapacityGraph:     /var/pathfinder2/data/capacity_graph.db
-  rpcURL:                    http://pathfinder2:54389
+ingress:
+  enabled: false
+  annotations: {}
+  host: ""
+  tls:
+    enabled: false
+    secret: ""
+  middlewares:
+    cors:
+      enabled: false
+      name: cors
+      origins:
+        list: []
+        list-regex: []
 
-postgresql:
-  enabled: true
-  auth:
-    username:                 doadmin
-    database:                 index
-    existingSecret:           indexer-db-secret 
-  primary:
-    service:
-      type:                   NodePort
-      nodePorts:
-        postgresql:           "30032"
+# Pathfinder
+pathfinder:
+  enabled: false
+  indexer-db-connection-string:
+  indexer-ws-url: ws://blockchain-indexer:8675
+  internal-capacity-graph: /var/pathfinder2/data/capacity_graph.db
+  external-capacity-graph: /var/pathfinder2/data/capacity_graph.db
+  rpc-url: http://pathfinder2:54389

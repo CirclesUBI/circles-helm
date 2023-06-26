@@ -1,18 +1,17 @@
+{{- if .Values.pathfinder.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
   labels:
     app: pathfinder2
   name: pathfinder2
-  namespace: pathfinder
 spec:
   clusterIP: None
   ports:
-    - name: "54389"
+    - name: http
       port: 54389
       targetPort: 54389
   selector:
     app: pathfinder2
   type: ClusterIP
-status:
-  loadBalancer: {}
+{{- end -}}

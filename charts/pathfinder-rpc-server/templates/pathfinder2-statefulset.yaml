@@ -1,10 +1,10 @@
+{{- if .Values.pathfinder.enabled -}}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
     app: pathfinder2
   name: pathfinder2
-  namespace: pathfinder
 spec:
   replicas: 1
   selector:
@@ -41,6 +41,4 @@ spec:
         resources:
           requests:
             storage: 200Gi 
-      status: {}
-status:
-  replicas: 0
+{{- end -}}

@@ -1,20 +1,22 @@
 ---    
+{{- if .Values.ingress.enabled -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: pathfinder-ingress
-  namespace: pathfinder
+  {{- with .Values.ingress.annotations }}
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.middlewares: pathfinder-cors-headers@kubernetescrd 
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
+  {{- if .Values.ingress.tls.enabled }}
   tls:
-    - hosts:
-        - {{ .Values.pathfinderProxyHost }}
-      secretName: tls-pathfinder
+  - hosts:
+    - {{ .Values.ingress.host }}
+    secretName: {{ .Values.ingress.tls.secret }}
+  {{- end }}
   rules:
-  - host: {{ .Values.pathfinderProxyHost }}
+  - host: {{ .Values.ingress.host }}
     http:
       paths:
       - path: /
@@ -23,5 +25,5 @@ spec:
           service:
             name: pathfinder-proxy
             port:
-              number: 8675
-    
+              name: http
+{{- end -}}

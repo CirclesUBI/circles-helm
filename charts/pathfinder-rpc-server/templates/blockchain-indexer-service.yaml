@@ -1,18 +1,17 @@
+{{- if index .Values "blockchain-indexer" "enabled" -}}
 apiVersion: v1
 kind: Service
 metadata:
   labels:
     app: blockchain-indexer
   name: blockchain-indexer
-  namespace: pathfinder
 spec:
   clusterIP: None
   ports:
-    - name: "8675"
+    - name: ws
       port: 8675
       targetPort: 8675
   selector:
     app: blockchain-indexer
   type: ClusterIP
-status:
-  loadBalancer: {}
+{{- end -}}

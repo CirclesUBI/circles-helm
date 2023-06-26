@@ -1,16 +1,15 @@
+{{- if index .Values "pathfinder-proxy" "enabled" -}}
 apiVersion: v1
 kind: Service
 metadata:
   labels:
     app: pathfinder-proxy
   name: pathfinder-proxy
-  namespace: pathfinder
 spec:
   ports:
-    - name: "8675"
-      port: 8675
+    - name: http
+      port: 80
       targetPort: 8675
   selector:
     app: pathfinder-proxy
-status:
-  loadBalancer: {}
+{{- end -}}
