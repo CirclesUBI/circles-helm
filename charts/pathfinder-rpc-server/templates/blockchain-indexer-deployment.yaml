@@ -1,8 +1,8 @@
 {{- if index .Values "blockchain-indexer" "enabled" -}}
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
-  labels:
+   labels:
     app: blockchain-indexer
   name: blockchain-indexer
 spec:
@@ -10,7 +10,6 @@ spec:
   selector:
     matchLabels:
       app: blockchain-indexer
-  serviceName: blockchain-indexer
   template:
     metadata:
       labels:
@@ -18,7 +17,7 @@ spec:
     spec:
       containers:
         - env:
-          - name:     HUB_ADDRESS
+         - name:     HUB_ADDRESS
             valueFrom:
               configMapKeyRef:
                 key:  HUB_ADDRESS
@@ -49,5 +48,4 @@ spec:
             - containerPort: 8675
           resources: {}
       restartPolicy: Always
-  updateStrategy: {}
 {{- end -}}

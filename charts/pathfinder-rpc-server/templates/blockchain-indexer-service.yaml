@@ -1,17 +1,15 @@
 {{- if index .Values "blockchain-indexer" "enabled" -}}
 apiVersion: v1
 kind: Service
-metadata:
+metadata:    
   labels:
     app: blockchain-indexer
   name: blockchain-indexer
 spec:
-  clusterIP: None
   ports:
-    - name: ws
+    - name: ws 
       port: 8675
       targetPort: 8675
   selector:
     app: blockchain-indexer
-  type: ClusterIP
 {{- end -}}
