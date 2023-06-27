@@ -15,7 +15,7 @@ spec:
     accessControlAllowOriginList:
       {{- toYaml . | nindent 6 }}
     {{- end }}
-    {{- with index .Values.ingress.middlewares.cors.origins "list-regex" }}
+    {{- with index .Values.ingress.middlewares.cors.origins "listRegex" }}
     accessControlAllowOriginListRegex:
       {{- toYaml . | nindent 6 }}
     {{- end }}

@@ -1,33 +1,29 @@
-# Smart Contracts
-contracts:
-  hub-address: ""
-
 # Default values for pathfinder-rpc-server 
 postgresql:
   enabled: false
   auth:
-    username: ""
+    username: 
     database: index
   primary:
     persistence:
       size: 500Gi
 
 # Blockchain Indexer
-blockchain-indexer:
+blockchainIndexer:
   enabled: false
-  indexer-websocket-url: ""
-  indexer-rpc-gateway-url: ""
-  hub-address: ""
-  start-from-block: ""
+  indexerWebsocketURL: ""
+  indexerRPCGatewayURL: ""
+  hubAddress: ""
+  startFromBlock: ""
 
 # Pathfinder proxy
-pathfinder-proxy:
+pathfinderProxy:
   enabled: false
   port: "8675"
-  cors-origins: ""
+  corsOrigins: ""
   upstream:
-    service-endpoints: ""
-    health-endpoints: ""
+    serviceEndpoints: ""
+    healthEndpoints: ""
 
 ingress:
   enabled: false
@@ -42,13 +38,12 @@ ingress:
       name: cors
       origins:
         list: []
-        list-regex: []
+        listRegex: []
 
 # Pathfinder
 pathfinder:
   enabled: false
-  indexer-db-connection-string:
-  indexer-ws-url: ws://blockchain-indexer:8675
-  internal-capacity-graph: /var/pathfinder2/data/capacity_graph.db
-  external-capacity-graph: /var/pathfinder2/data/capacity_graph.db
-  rpc-url: http://pathfinder2:54389
+  indexerWSurl: ws://blockchain-indexer:8675
+  internalCapacityGraph: /var/pathfinder2/data/capacity_graph.db
+  externalCapacityGraph: /var/pathfinder2/data/capacity_graph.db
+  rpcURL: http://pathfinder2:54389
