@@ -1,58 +1,66 @@
-{{- if .Values.pathfinder.enabled -}}
+{{- if index .Values "pathfinder" "enabled" -}}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    app: pathfinder2-updater
-  name: pathfinder2-updater
+    app: pathfinder2-rpc-updater
+  name: pathfinder2-rpc-updater
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: pathfinder2-updater
-  serviceName: pathfinder2-updater
+      app: pathfinder2-rpc-updater
+  serviceName: pathfinder2-rpc-updater
   template:
     metadata:
       labels:
-        app: pathfinder2-updater
+        app: pathfinder2-rpc-updater
     spec:
-      containers:
-        - env:
-            - name:     EXTERNAL_CAPACITY_GRAPH_PATH
-              valueFrom:
-                configMapKeyRef:
-                  key:  PATHFINDER_UPDATER_EXTERNAL_CAPACITY_GRAPH_PATH
-                  name: pathfinder-environment
-            - name:     INDEXER_DB_CONNECTION_STRING
-              valueFrom:
-                secretKeyRef:
-                  key:  PATHFINDER_UPDATER_INDEXER_DB_CONNECTION_STRING
-                  name: pathfinder-updater-connection-string 
-            - name:     INDEXER_WS_URL
-              valueFrom:
-                configMapKeyRef:
-                  key:  PATHFINDER_UPDATER_INDEXER_WS_URL
-                  name: pathfinder-environment
-            - name:     INTERNAL_CAPACITY_GRAPH_PATH
-              valueFrom:
-                configMapKeyRef:
-                  key:  PATHFINDER_UPDATER_INTERNAL_CAPACITY_GRAPH_PATH
-                  name: pathfinder-environment
-            - name:     PATHFINDER_RPC_URL
-              valueFrom:
-                configMapKeyRef:
-                  key:  PATHFINDER_UPDATER_RPC_URL
-                  name: pathfinder-environment
-          image: circlesubi/pathfinder2-updater:latest
-          name: pathfinder2-updater
-          resources: {}
-          volumeMounts:
-            - mountPath: /var/pathfinder2/data
-              name: pathfinder2-claim0
       volumes: 
-        - name: pathfinder2-claim0 
+        - name: pathfinder2-claim
           persistentVolumeClaim:
-            claimName: pathfinder2-claim0-pathfinder2-0
+            claimName: pathfinder2-claim
+      containers:
+      - name: pathfinder2-updater
+        image: circlesubi/pathfinder2-updater:latest
+        volumeMounts:
+          - name:  pathfinder2-claim
+            mountPath: /var/pathfinder2/data
+        env:
+          - name:     EXTERNAL_CAPACITY_GRAPH_PATH
+            valueFrom:
+              configMapKeyRef:
+                key:  PATHFINDER_UPDATER_EXTERNAL_CAPACITY_GRAPH_PATH
+                name: pathfinder-environment
+          - name:     INDEXER_DB_CONNECTION_STRING
+            valueFrom:
+              secretKeyRef:
+                key:  PATHFINDER_UPDATER_INDEXER_DB_CONNECTION_STRING
+                name: pathfinder-updater-connection-string 
+          - name:     INDEXER_WS_URL
+            valueFrom:
+              configMapKeyRef:
+                key:  PATHFINDER_UPDATER_INDEXER_WS_URL
+                name: pathfinder-environment
+          - name:     INTERNAL_CAPACITY_GRAPH_PATH
+            valueFrom:
+              configMapKeyRef:
+                key:  PATHFINDER_UPDATER_INTERNAL_CAPACITY_GRAPH_PATH
+                name: pathfinder-environment
+          - name:     PATHFINDER_RPC_URL
+            valueFrom:
+              configMapKeyRef:
+                key:  PATHFINDER_UPDATER_RPC_URL
+                name: pathfinder-environment
+      - name: pathfinder2
+        image: circlesubi/pathfinder2:latest
+        volumeMounts:
+          - name: pathfinder2-claim
+            mountPath: /var/pathfinder2/data
+        args:
+          - 0.0.0.0:54389
+        ports:
+          - containerPort: 54389
       restartPolicy: Always
   updateStrategy: {}
 {{- end -}}

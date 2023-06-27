@@ -1,4 +1,4 @@
-{{- if .Values.pathfinder.enabled -}}
+{{- if index .Values "pathfinder" "enabled" -}}
 apiVersion: v1
 kind: Service
 metadata:

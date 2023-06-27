@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-   labels:
+  labels:
     app: blockchain-indexer
   name: blockchain-indexer
 spec:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - env:
-         - name:     HUB_ADDRESS
+          - name:     HUB_ADDRESS
             valueFrom:
               configMapKeyRef:
                 key:  HUB_ADDRESS
@@ -41,7 +41,7 @@ spec:
             valueFrom:
               configMapKeyRef:
                 key:  START_FROM_BLOCK 
-                name: env 
+                name: pathfinder-environment 
           image: circlesubi/blockchain-indexer:latest
           name: blockchain-indexer
           ports:

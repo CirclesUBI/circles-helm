@@ -15,7 +15,7 @@ data:
   PATHFINDER_PROXY_UPSTREAM_SERVICE_ENDPOINTS:     {{ index .Values "pathfinder-proxy" "upstream" "service-endpoints" }}
   PATHFINDER_PROXY_UPSTREAM_HEALTH_ENDPOINTS:      {{ index .Values "pathfinder-proxy" "upstream" "health-endpoints" }}
   {{- end }}
-  {{- if .Values.pathfinder.enabled }}
+  {{- if index .Values "pathfinder" "enabled" }}
   PATHFINDER_UPDATER_INDEXER_WS_URL:               {{ index .Values.pathfinder "indexer-ws-url" }}
   PATHFINDER_UPDATER_INTERNAL_CAPACITY_GRAPH_PATH: {{ index .Values.pathfinder "internal-capacity-graph" }}
   PATHFINDER_UPDATER_EXTERNAL_CAPACITY_GRAPH_PATH: {{ index .Values.pathfinder "external-capacity-graph" }}
