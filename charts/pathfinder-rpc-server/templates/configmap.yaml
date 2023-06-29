@@ -7,11 +7,11 @@ data:
   HUB_ADDRESS:                                    {{ .Values.blockchainIndexer.hubAddress }}
   INDEXER_RPC_GATEWAY_URL:                        {{ .Values.blockchainIndexer.indexerRPCGatewayURL }}
   INDEXER_WEBSOCKET_URL:                          {{ .Values.blockchainIndexer.indexerWebsocketURL }}
-  START_FROM_BLOCK:                              '{{ .Values.blockchainIndexer.startFromBlock }}'
+  START_FROM_BLOCK:                               '{{ .Values.blockchainIndexer.startFromBlock }}'
   {{- end }}
 
   {{- if .Values.pathfinderProxy.enabled }}
-  PATHFINDER_PROXY_PORT:                           {{ .Values.pathfinderProxy.port }}
+  PATHFINDER_PROXY_PORT:                          '{{ .Values.pathfinderProxy.port }}'
   PATHFINDER_PROXY_CORS_ORIGINS:                   {{ .Values.pathfinderProxy.corsOrigins }}
   PATHFINDER_PROXY_UPSTREAM_SERVICE_ENDPOINTS:     {{ .Values.pathfinderProxy.upstream.serviceEndpoints }}
   PATHFINDER_PROXY_UPSTREAM_HEALTH_ENDPOINTS:      {{ .Values.pathfinderProxy.upstream.healthEndpoints }}

@@ -3,20 +3,20 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    app: pathfinder2-rpc-updater
-  name: pathfinder2-rpc-updater
+    app: pathfinder2
+  name: pathfinder2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: pathfinder2-rpc-updater
-  serviceName: pathfinder2-rpc-updater
+      app: pathfinder2
+  serviceName: pathfinder2
   template:
     metadata:
       labels:
-        app: pathfinder2-rpc-updater
+        app: pathfinder2
     spec:
-      volumes: 
+      volumes:
         - name: pathfinder2-claim
           persistentVolumeClaim:
             claimName: pathfinder2-claim
