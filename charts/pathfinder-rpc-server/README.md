@@ -36,7 +36,7 @@ To restore the database please execute this command
  kubectl -n pathfinder exec -it pod/pathfinder-rpc-server-postgresql-0 -- sh -c 'PGPASSWORD=${POSTGRES_PASSWORD} pg_restore -h localhost -p 5432 -U ${POSTGRES_USER} -v -d ${POSTGRES_DB}' < indexer.dump
 ```
 
-This command will take some time  ( a few hours) wait until the pg_restore finished. The last table synced is `transactions_2`
+This command will take some time  (a few hours) wait until the pg_restore finishes. The last table synced is `transactions_2`.
 
 
 
