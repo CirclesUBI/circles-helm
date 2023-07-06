@@ -33,36 +33,13 @@ When the chart is installed is necessary to restore a db dump. Currently there i
 To restore the database please execute this command
 
 ```
-pg_restore -h <HOST_MACHINE> -p 30032 -U postgres -v  -d  index < ./bak_indexer_db_20230529.dump
+ kubectl -n pathfinder exec -it pod/pathfinder-rpc-server-postgresql-0 -- sh -c 'PGPASSWORD=${POSTGRES_PASSWORD} pg_restore -h localhost -p 5432 -U ${POSTGRES_USER} -v -d ${POSTGRES_DB}' < indexer.dump
 ```
 
-This command will take some time, and you will see some error in the postgres pod, you can safely assume everything is fine when you see these logs in the blockchain indexer pod:
+This command will take some time  ( a few hours) wait until the pg_restore finished. The last table synced is `transactions_2`
 
-```
-Round 5: Round 5 started at 06/14/2023 13:48:22.
-Round 5:  Importing from staging tables ..
-Round 5: Finding the last persisted block ..
-Round 5: Last persisted block: 28202229
-Round 5: Finding the latest blockchain block ..
-Using the http connection for the next round.
-Round 5: Latest blockchain block: 28450652
-Round 5: Found 248423 blocks to catch up. Using the 'BulkSource'.
-Round 5:  Writing batch to staging tables ..
-Round 5:  Importing from staging tables ..
-```
-
-At this point you can cancel the pg_restore command and the indexer will continue indexing 🌻
-
-It could be that the indexer throws errors such as: 
-
-```
- Exception while reading from stream ....
-
- ```
-
- Do not worry to much since eventually it will correct itself and you will see the logs from above. 
 
 
  #### Gnosis Chain and Chiado Tesnet chain 
 
- The current indexer was written only for gnosis chain, but it can be used for chiado.  Use `values-prd.yaml`
+ The current indexer was written only for gnosis chain, but it can be used for chiado.
