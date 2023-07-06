@@ -1,0 +1,47 @@
+{{- if  .Values.pathfinderProxy.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pathfinder-proxy
+  name: pathfinder-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pathfinder-proxy
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: pathfinder-proxy
+    spec:
+      containers:
+        - env:
+            - name: CORS_ORIGINS
+              valueFrom:
+                configMapKeyRef:
+                  key:  PATHFINDER_PROXY_CORS_ORIGINS
+                  name: pathfinder-environment
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  key:  PATHFINDER_PROXY_PORT
+                  name: pathfinder-environment
+            - name: UPSTREAM_HEALTH_ENDPOINTS
+              valueFrom:
+                configMapKeyRef:
+                  key: PATHFINDER_PROXY_UPSTREAM_HEALTH_ENDPOINTS
+                  name: pathfinder-environment
+            - name: UPSTREAM_SERVICE_ENDPOINTS
+              valueFrom:
+                configMapKeyRef:
+                  key:  PATHFINDER_PROXY_UPSTREAM_SERVICE_ENDPOINTS
+                  name: pathfinder-environment
+          image: circlesubi/pathfinder-proxy:latest
+          name: pathfinder-proxy
+          ports:
+            - containerPort: 8675
+          resources: {}
+      restartPolicy: Always
+{{- end -}}

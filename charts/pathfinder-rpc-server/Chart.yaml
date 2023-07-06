@@ -1,0 +1,12 @@
+name: pathfinder-rpc-server
+description: pathfinder-rpc-server helm chart 
+version: 0.2.0
+apiVersion: v2
+keywords:
+  - pathfinder-rpc-server
+
+dependencies:
+  - name:       postgresql
+    repository: https://charts.bitnami.com/bitnami
+    version:    12.1.9
+    condition:  postgresql.enabled

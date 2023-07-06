@@ -1,0 +1,49 @@
+# Default values for pathfinder-rpc-server 
+postgresql:
+  enabled: false
+  auth:
+    username: 
+    database: index
+  primary:
+    persistence:
+      size: 500Gi
+
+# Blockchain Indexer
+blockchainIndexer:
+  enabled: false
+  indexerWebsocketURL: ""
+  indexerRPCGatewayURL: ""
+  hubAddress: ""
+  startFromBlock: ""
+
+# Pathfinder proxy
+pathfinderProxy:
+  enabled: false
+  port: "8675"
+  corsOrigins: ""
+  upstream:
+    serviceEndpoints: ""
+    healthEndpoints: ""
+
+ingress:
+  enabled: false
+  annotations: {}
+  host: ""
+  tls:
+    enabled: false
+    secret: ""
+  middlewares:
+    cors:
+      enabled: false
+      name: cors
+      origins:
+        list: []
+        listRegex: []
+
+# Pathfinder
+pathfinder:
+  enabled: false
+  indexerWSurl: ws://blockchain-indexer:8675
+  internalCapacityGraph: /var/pathfinder2/data/capacity_graph.db
+  externalCapacityGraph: /var/pathfinder2/data/capacity_graph.db
+  rpcURL: http://pathfinder2:54389

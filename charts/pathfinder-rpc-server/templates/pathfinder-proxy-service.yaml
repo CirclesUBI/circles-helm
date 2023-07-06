@@ -1,0 +1,15 @@
+{{- if .Values.pathfinder.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pathfinder-proxy
+  name: pathfinder-proxy
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8675
+  selector:
+    app: pathfinder-proxy
+{{- end -}}
