@@ -337,4 +337,20 @@ entries:
     urls:
     - https://github.com/CirclesUBI/circles-helm/releases/download/api-server-0.2.1/api-server-0.2.1.tgz
     version: 0.2.1
-generated: "2023-06-14T22:56:39.054805014Z"
+  pathfinder-rpc-server:
+  - apiVersion: v2
+    created: "2023-07-06T12:46:08.788184504Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.9
+    description: pathfinder-rpc-server helm chart
+    digest: c61631026c90ada73a925e73ae9392d7e0568655fd5abf4509abc07dcb427502
+    keywords:
+    - pathfinder-rpc-server
+    name: pathfinder-rpc-server
+    urls:
+    - https://github.com/CirclesUBI/circles-helm/releases/download/pathfinder-rpc-server-0.2.0/pathfinder-rpc-server-0.2.0.tgz
+    version: 0.2.0
+generated: "2023-07-06T12:46:08.788432707Z"
