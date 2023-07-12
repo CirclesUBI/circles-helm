@@ -11,6 +11,9 @@ spec:
     - name: http
       port: 54389
       targetPort: 54389
+    - name: http2
+      port: 8794
+      targetPort: 8794
   selector:
     app: pathfinder2
   type: ClusterIP

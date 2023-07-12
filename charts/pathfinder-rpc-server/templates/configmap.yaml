@@ -7,6 +7,8 @@ data:
   HUB_ADDRESS:                                    {{ .Values.blockchainIndexer.hubAddress }}
   INDEXER_RPC_GATEWAY_URL:                        {{ .Values.blockchainIndexer.indexerRPCGatewayURL }}
   INDEXER_WEBSOCKET_URL:                          {{ .Values.blockchainIndexer.indexerWebsocketURL }}
+  BULK_FLUSH_INTERVAL_IN_BLOCKS:                  "{{ .Values.blockchainIndexer.indexerBulkFlushIntervalInBlocks }}"
+  BULK_FLUSH_TIMEOUT_IN_SECONDS:                  "{{ .Values.blockchainIndexer.indexerBulkFlushTimeoutInSeconds }}"
   START_FROM_BLOCK:                               '{{ .Values.blockchainIndexer.startFromBlock }}'
   {{- end }}
 

@@ -23,10 +23,10 @@ spec:
                 key:  HUB_ADDRESS
                 name: pathfinder-environment
           - name:     INDEXER_CONNECTION_STRING
-            valueFrom: 
+            valueFrom:
               secretKeyRef:
                 key:  BLOCKCHAIN_INDEXER_CONNECTION_STRING
-                name: blockchain-indexer-connection-string 
+                name: blockchain-indexer-connection-string
           - name:     INDEXER_RPC_GATEWAY_URL
             valueFrom:
               configMapKeyRef:
@@ -40,8 +40,18 @@ spec:
           - name:     START_FROM_BLOCK
             valueFrom:
               configMapKeyRef:
-                key:  START_FROM_BLOCK 
-                name: pathfinder-environment 
+                key:  START_FROM_BLOCK
+                name: pathfinder-environment
+          - name:    BULK_FLUSH_INTERVAL_IN_BLOCKS
+            valueFrom:
+              configMapKeyRef:
+                key:  BULK_FLUSH_INTERVAL_IN_BLOCKS
+                name: pathfinder-environment
+          - name:    BULK_FLUSH_TIMEOUT_IN_SECONDS
+            valueFrom:
+              configMapKeyRef:
+                key:  BULK_FLUSH_TIMEOUT_IN_SECONDS
+                name: pathfinder-environment
           image: circlesubi/blockchain-indexer:latest
           name: blockchain-indexer
           ports:

@@ -1,13 +1,13 @@
 {{- if .Values.blockchainIndexer.enabled -}}
 apiVersion: v1
 kind: Service
-metadata:    
+metadata:
   labels:
     app: blockchain-indexer
   name: blockchain-indexer
 spec:
   ports:
-    - name: ws 
+    - name: ws
       port: 8675
       targetPort: 8675
   selector:
