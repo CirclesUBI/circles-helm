@@ -14,6 +14,8 @@ blockchainIndexer:
   indexerWebsocketURL: ""
   indexerRPCGatewayURL: ""
   hubAddress: ""
+  indexerBulkFlushIntervalInBlocks: ""
+  indexerBulkFlushTimeoutInSeconds: ""
   startFromBlock: ""
 
 # Pathfinder proxy

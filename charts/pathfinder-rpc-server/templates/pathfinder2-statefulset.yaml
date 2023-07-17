@@ -36,7 +36,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 key:  PATHFINDER_UPDATER_INDEXER_DB_CONNECTION_STRING
-                name: pathfinder-updater-connection-string 
+                name: pathfinder-updater-connection-string
           - name:     INDEXER_WS_URL
             valueFrom:
               configMapKeyRef:
@@ -52,6 +52,8 @@ spec:
               configMapKeyRef:
                 key:  PATHFINDER_UPDATER_RPC_URL
                 name: pathfinder-environment
+        ports:
+          - containerPort: 8794
       - name: pathfinder2
         image: circlesubi/pathfinder2:latest
         volumeMounts:
