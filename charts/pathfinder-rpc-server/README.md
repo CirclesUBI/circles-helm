@@ -11,6 +11,11 @@ For a detailed description please refer to [land-local](https://github.com/Circl
 | [pathfinder-proxy](https://github.com/CirclesUBI/pathfinder-proxy)       | pathfinder-proxy      | Maintains statistics, load balances and filters requests to the 'pathfinder2'            |
 
 
+#### Notes
+Since the installation of pathfinder and updater are in the same container, this charts needs to explicitely set the ports for both in the service so these can be located by other services such as the pathfinder-proxy on the network.
+
+For an in detail explanation of the every component and variable please refer to the repos above.
+
 ### Pre-requisities
 
 Create the following secrets in your cluster:
@@ -19,6 +24,7 @@ Create the following secrets in your cluster:
     - indexer-db-secret: `password` for the `doadmin` user and `postgres-password`  for the `postgres` user
 
 Manage your secrets with your prefered tool.
+
 
 ### Currents caveats and usage
 
