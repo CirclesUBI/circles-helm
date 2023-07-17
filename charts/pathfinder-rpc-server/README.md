@@ -12,7 +12,7 @@ For a detailed description please refer to [land-local](https://github.com/Circl
 
 
 #### Notes
-Since the installation of pathfinder and updater are in the same container, this charts needs to explicitely set the ports for both in the service so these can be located by other services such as the pathfinder-proxy on the network.
+Since the installation of pathfinder and updater are in the same container, this charts needs to explicitely set the ports for both in the service so these can be located by other services on the network, such as the pathfinder-proxy.
 
 For an in detail explanation of the every component and variable please refer to the repos above.
 
@@ -23,22 +23,22 @@ Create the following secrets in your cluster:
     - pathfinder-updater-connection-string: connection string for the pathfinder to the db
     - indexer-db-secret: `password` for the `doadmin` user and `postgres-password`  for the `postgres` user
 
-Manage your secrets with your prefered tool.
+Manage your secrets with your preferred tool.
 
 
 ### Currents caveats and usage
 
 #### Caveats
-- The indexer db is empty and without proper schemas, indexes and reference since there is not an indexer-db-init. It only exists for local development with ganache.
-- To syncronise the indexer fully at the start it requires a lot resources and its own rpc node. There is still the option to install your own rpc node if you want to go down this road and avoid the following workaround. However, for quicker sync and  resources saving  we recommend the workaround.
+- The indexer database is empty and without proper schemas, indexes and reference since there is no indexer-db-init. It only exists for local development with ganache.
+- To synchronise the indexer fully at the start requires a lot of resources and its own RPC node. There is still the option to install your own RPC node, if you want to go down this road and avoid the following workaround. However, for quicker sync and resource savings we recommend the workaround.
 
 #### Workaround
 
-When the chart is installed is necessary to restore DB fully (indexes and references included). Currently there is one [here](https://rpc.helsinki.circlesubi.id/pathfinder-db/bak_indexer_db_20230529.dump)
+When the chart is installed it is necessary to perform a complete database restore (indexes and references included). Currently there is [a dump from 2023-05-29](https://rpc.helsinki.circlesubi.id/pathfinder-db/bak_indexer_db_20230529.dump) available.
 
-You will find the `0.0.64.sql` file [here](https://github.com/CirclesUBI/blockchain-indexer/blob/dev/CirclesLand.BlockchainIndexer/DbMigrations/0.0.64.sql) from the `dev` branch. We assume this is latest but this should be confirmed with the repo mantainer in case of any changes.
+You will need to download [this `0.0.64.sql` file](https://github.com/CirclesUBI/blockchain-indexer/blob/dev/CirclesLand.BlockchainIndexer/DbMigrations/0.0.64.sql) from the `dev` branch. We assume this is the latest schema, but this should be confirmed with the upstream repository, in case of doubt.
 
-To restore the database please execute the following commands
+To restore the database, please execute the following commands:
 ```
 kubectl -n pathfinder exec -it pod/pathfinder-rpc-server-postgresql-0 -- sh -c 'PGPASSWORD=${POSTGRES_PASSWORD} psql -h localhost -p 5432 -U ${POSTGRES_USER} -v -d ${POSTGRES_DB}' < ./0.0.64.sql
 ```
