@@ -8,17 +8,8 @@ timeoutSeconds: 3
 
 image:
   repository: ghcr.io/circlesubi/api-server
+  migrations: ghcr.io/circlesubi/api-server-migrations
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "dev"
-
-extensions:
-  image: ghcr.io/circlesubi/api-server-extensions
-  tag: dev
-
-migrations:
-  image: ghcr.io/circlesubi/api-server-migrations
-  tag: dev
 
 imagePullSecrets: []
 nameOverride: ""
