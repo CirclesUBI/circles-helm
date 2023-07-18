@@ -75,7 +75,7 @@ configuration:
   EXTERNAL_DOMAIN: ""
   CORS_ORIGINS: "https:///"
   RPC_GATEWAY_URL: "https://rpc.circlesubi.id"
-  PATHFINDER_URL: "https://rpc.circlesubi.id/pathfinder"
+  PATHFINDER_URL: "https://pathfinder.circlesubi.id"
   BLOCKCHAIN_INDEX_WS_URL: "wss://rpc.circlesubi.id/indexer"
   ACCEPTED_ISSUER: ""
   HUMANODE_CLIENT_ID: ""
