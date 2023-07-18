@@ -3,6 +3,22 @@ entries:
   api-server:
   - apiVersion: v2
     appVersion: 1.0.2
+    created: "2023-07-18T21:57:21.48821896Z"
+    digest: a732f2d674cd0ca86e635295c930c8c7a1fade214a6a5c28cb41ee1acb536313
+    home: https://circlesubi.id
+    icon: https://avatars.githubusercontent.com/u/60328382
+    maintainers:
+    - email: daniel.janz@gnosis.pm
+      name: Daniel Janz
+    - email: jon.richter@gnosis.pm
+      name: Jon Richter
+    name: api-server
+    type: application
+    urls:
+    - https://github.com/CirclesUBI/circles-helm/releases/download/api-server-1.0.1/api-server-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 1.0.2
     created: "2023-07-18T20:10:39.187401474Z"
     digest: 89dcfdad067fb12b83872705c5c0aeb2c4fd4224501b96969c2d0d1897768a6f
     home: https://circlesubi.id
@@ -384,4 +400,4 @@ entries:
     urls:
     - https://github.com/CirclesUBI/circles-helm/releases/download/pathfinder-rpc-server-0.2.0/pathfinder-rpc-server-0.2.0.tgz
     version: 0.2.0
-generated: "2023-07-18T20:10:39.187560977Z"
+generated: "2023-07-18T21:57:21.488429762Z"
