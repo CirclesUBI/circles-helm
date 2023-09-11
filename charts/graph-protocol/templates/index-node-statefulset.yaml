@@ -38,7 +38,7 @@ spec:
             - name: GRAPH_LOG
               valueFrom:
                 configMapKeyRef:
-                  name: env
+                  name: graph-protocol-env
                   key: GRAPH_LOG
             - name: BLOCK_INGESTOR
               value: "{{ .Values.graphProtocol.indexNode }}-0"
@@ -67,4 +67,4 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: IPFS
-                  name: env
+                  name: graph-protocol-env
