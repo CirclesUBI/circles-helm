@@ -30,7 +30,7 @@ spec:
             - name: GRAPH_LOG
               valueFrom:
                 configMapKeyRef:
-                  name: graph-protocol-env
+                  name: env
                   key: GRAPH_LOG
             - name: ethereum
               valueFrom:
@@ -41,7 +41,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   key: IPFS
-                  name: graph-protocol-env
+                  name: env
             - name: EXPERIMENTAL_SUBGRAPH_VERSION_SWITCHING_MODE
               value: synced
             - name: DISABLE_BLOCK_INGESTOR
