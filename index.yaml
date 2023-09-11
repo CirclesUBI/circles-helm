@@ -371,6 +371,16 @@ entries:
     version: 0.2.1
   circles-graph-node:
   - apiVersion: v2
+    created: "2023-09-11T12:40:46.461520072Z"
+    description: Helm chart to install graph protocol for circles.garden
+    digest: 37cd9e9a548edfb476b28f9ea5a46be5474f8d38b0e46eff4fdcc2f12af5fb2f
+    keywords:
+    - graph-node
+    name: circles-graph-node
+    urls:
+    - https://github.com/CirclesUBI/circles-helm/releases/download/circles-graph-node-0.1.1/circles-graph-node-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     created: "2023-09-11T09:48:27.230420383Z"
     description: Helm chart to install graph protocol for circles.garden
     digest: a473ae1b5003c218c389916ff1021e45c70293a768502a465a76b6d91dee5862
@@ -411,4 +421,4 @@ entries:
     urls:
     - https://github.com/CirclesUBI/circles-helm/releases/download/pathfinder-rpc-server-0.2.0/pathfinder-rpc-server-0.2.0.tgz
     version: 0.2.0
-generated: "2023-09-11T09:48:27.230475083Z"
+generated: "2023-09-11T12:40:46.461585571Z"
