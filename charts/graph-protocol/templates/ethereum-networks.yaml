@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ethereum-networks
+data:
+  networks: >-
+      {{ .Values.networks }}
