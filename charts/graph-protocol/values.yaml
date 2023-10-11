@@ -1,7 +1,4 @@
 
-# envinronment stg: chiado prd: gnosis
-env:
-
 # graph-protocol configuration
 graphProtocol:
   logs: debug
@@ -42,9 +39,7 @@ queryNodeHost:
 queryNodeReplicas:
 
 # ethereum networks:
-network:
-rpcNode:
-rpcPort:
+networks:
 
 # CORS entries allowed:
 CORS_allowed: []
