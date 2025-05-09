@@ -1,5 +1,4 @@
-
-# graph-protocol configuration
+# graph-protocol initial values
 graphProtocol:
   logs: debug
   admin:
